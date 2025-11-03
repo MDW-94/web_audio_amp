@@ -5,7 +5,7 @@ const treble = document.getElementById("treble");
 const visualiser = document.getElementById("visualiser");
 
 const context = new AudioContext();
-const analyserNode = new AnalyserNode(context, { fftSize: 256 });
+const analyserNode = new AnalyserNode(context, { fftSize: 128 });
 
 function getGuitar() {
   return navigator.mediaDevices.getUserMedia({
@@ -47,5 +47,11 @@ function drawVisualiser() {
   });
 }
 
+function resize() {
+  visualiser.width = visualiser.clientWidth * window.devicePixelRatio;
+  visualiser.height = visualiser.clientHeight * window.devicePixelRatio;
+}
+
+resize();
 setupContext();
 drawVisualiser();
